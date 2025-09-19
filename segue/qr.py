@@ -3,7 +3,7 @@ from io import BytesIO
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QWidget, QLabel, QPushButton, QVBoxLayout
 
-class QrViz(QWidget):
+class QQrViz(QWidget):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -24,4 +24,9 @@ class QrViz(QWidget):
 
     def setContent(self, content):
         self._content = content
-        self.update()
+
+    def setDarkColor(self, darkColor):
+        self._dark = darkColor
+
+    def setLightColor(self, lightColor):
+        self._light = lightColor
