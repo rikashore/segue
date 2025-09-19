@@ -1,3 +1,4 @@
+import segno
 from io import BytesIO
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QWidget, QLabel, QPushButton, QVBoxLayout
@@ -7,6 +8,9 @@ class QrViz(QWidget):
         super().__init__(*args, **kwargs)
 
         self._buf = BytesIO()
+        self._content = None
+        self._dark = "#111111"
+        self._light = "#FFFFFF"
 
         layout = QVBoxLayout()
         self.viz_label = QLabel("No QR generated")
@@ -17,3 +21,7 @@ class QrViz(QWidget):
         layout.addWidget(self.sv_btn)
 
         self.setLayout(layout)
+
+    def setContent(self, content):
+        self._content = content
+        self.update()
