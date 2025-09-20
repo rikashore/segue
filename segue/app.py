@@ -32,6 +32,11 @@ class SegueMainWindow(QMainWindow):
         self.setCentralWidget(central)
 
     def update_button_clicked(self):
-        print(self.qr_controls.light_colour)
-        print(self.qr_controls.dark_colour)
-        print(self.qr_controls.darkbtn.size())
+        self.qr_viz.genQr(
+            self.qr_controls.contents.text(),
+            self.qr_controls.light_color.name(),
+            self.qr_controls.dark_color.name(),
+            10
+        )
+
+        self.statusBar().showMessage("QR Updated", 3000)
