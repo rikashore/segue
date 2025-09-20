@@ -1,6 +1,7 @@
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QMainWindow, QHBoxLayout, QWidget, QLabel
 from qr import QQrViz
+from controls import QQrControls
 
 class SegueMainWindow(QMainWindow):
     def __init__(self):
@@ -16,16 +17,21 @@ class SegueMainWindow(QMainWindow):
 
         layout = QHBoxLayout()
 
-        l1 = QQrViz()
-        l2 = QLabel("Naurrr")
-        l2.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.qr_viz = QQrViz()
 
-        layout.addWidget(l1)
-        layout.addWidget(l2)
+        layout.addWidget(self.qr_viz, stretch=1)
+
+        self.qr_controls = QQrControls()
+        self.qr_controls.update_btn.clicked.connect(self.update_button_clicked)
+
+        layout.addWidget(self.qr_controls, stretch=1)
 
         central = QWidget()
         central.setLayout(layout)
 
-        l1.genQr("Swara why", light="#FFFFFF", dark="#111111", scale=5)
-
         self.setCentralWidget(central)
+
+    def update_button_clicked(self):
+        print(self.qr_controls.light_colour)
+        print(self.qr_controls.dark_colour)
+        print(self.qr_controls.darkbtn.size())
