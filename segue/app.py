@@ -1,6 +1,6 @@
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QMainWindow, QHBoxLayout, QWidget, QLabel
-from qr import QrViz
+from qr import QQrViz
 
 class SegueMainWindow(QMainWindow):
     def __init__(self):
@@ -16,7 +16,7 @@ class SegueMainWindow(QMainWindow):
 
         layout = QHBoxLayout()
 
-        l1 = QrViz()
+        l1 = QQrViz()
         l2 = QLabel("Naurrr")
         l2.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
@@ -25,5 +25,7 @@ class SegueMainWindow(QMainWindow):
 
         central = QWidget()
         central.setLayout(layout)
+
+        l1.genQr("Swara why", light="#FFFFFF", dark="#111111", scale=5)
 
         self.setCentralWidget(central)

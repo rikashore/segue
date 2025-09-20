@@ -1,16 +1,12 @@
 import segno
 from io import BytesIO
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import QWidget, QLabel, QPushButton, QVBoxLayout
 
 class QQrViz(QWidget):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
-        self._buf = BytesIO()
-        self._content = None
-        self._dark = "#111111"
-        self._light = "#FFFFFF"
 
         layout = QVBoxLayout()
         self.viz_label = QLabel("No QR generated")
@@ -22,11 +18,12 @@ class QQrViz(QWidget):
 
         self.setLayout(layout)
 
-    def setContent(self, content):
-        self._content = content
-
-    def setDarkColor(self, darkColor):
-        self._dark = darkColor
-
-    def setLightColor(self, lightColor):
-        self._light = lightColor
+    def genQr(self, content, light, dark, scale):
+        buf = BytesIO()
+        qrc = segno.make(content, error='H', micro=False)
+        qrc.save(buf, kind="png", dark=dark, light=light, scale=scale)
+        buf.seek(0)
+        pix = QPixmap()
+        pix.loadFromData(buf.read())
+        self.viz_label.clear()
+        self.viz_label.setPixmap(pix)
