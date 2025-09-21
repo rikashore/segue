@@ -15,12 +15,21 @@ class QQrControls(QWidget):
         layout.addStretch()
 
         content_label = QLabel("QR Contents")
-        content_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        content_label.setAlignment(Qt.AlignmentFlag.AlignLeft)
         layout.addWidget(content_label)
         self.contents = QLineEdit("Hey segue into this...")
         layout.addWidget(self.contents)
 
-        layout.addSpacing(15)
+        layout.addSpacing(30)
+
+        self.logo_file_label = QLabel("File Selected:")
+        self.logo_file_label.setAlignment(Qt.AlignmentFlag.AlignLeft)
+        layout.addWidget(self.logo_file_label)
+
+        logo_choose_button = QPushButton("Select Logo File")
+        layout.addWidget(logo_choose_button)
+
+        layout.addSpacing(30)
 
         grid_layout = QGridLayout()
 
@@ -43,19 +52,21 @@ class QQrControls(QWidget):
 
         layout.addLayout(grid_layout)
 
-        layout.addStretch()
+        layout.addSpacing(120)
 
         h_layout = QHBoxLayout()
 
         self.update_btn = QPushButton("Update")
         h_layout.addWidget(self.update_btn)
 
-        h_layout.addSpacing(50)
+        h_layout.addSpacing(100)
 
         self.save_btn = QPushButton("Save")
         h_layout.addWidget(self.save_btn)
 
         layout.addLayout(h_layout)
+
+        layout.addStretch()
 
         self.setLayout(layout)
 
