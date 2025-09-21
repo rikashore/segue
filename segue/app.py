@@ -1,5 +1,5 @@
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QMainWindow, QHBoxLayout, QWidget, QLabel
+from PySide6.QtWidgets import QMainWindow, QHBoxLayout, QWidget
 from qr import QQrViz
 from controls import QQrControls
 
@@ -10,7 +10,7 @@ class SegueMainWindow(QMainWindow):
         self.setWindowTitle("Segue")
 
         self.setMinimumSize(960, 540)
-        self.setMaximumSize(1600, 900)
+        self.setMaximumSize(960, 540)
 
         self.statusBar().setSizeGripEnabled(False)
         self.statusBar().showMessage("Segue Ready", 3000)
@@ -18,6 +18,7 @@ class SegueMainWindow(QMainWindow):
         layout = QHBoxLayout()
 
         self.qr_viz = QQrViz()
+        self.qr_viz.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         layout.addWidget(self.qr_viz, stretch=1)
 

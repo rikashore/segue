@@ -9,7 +9,7 @@ class QColorBox(QWidget):
         self.color = initial_color
 
     def sizeHint(self):
-        return QSize(25, 25)
+        return QSize(75, 25)
     
     def paintEvent(self, _):
         painter = QPainter(self)
