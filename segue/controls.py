@@ -1,6 +1,6 @@
 from PySide6.QtGui import QColor
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QFormLayout, QPushButton, QLineEdit, QColorDialog, QLabel
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QGridLayout, QPushButton, QLineEdit, QColorDialog, QLabel
 from color_box import QColorBox
 
 class QQrControls(QWidget):
@@ -22,21 +22,26 @@ class QQrControls(QWidget):
 
         layout.addSpacing(15)
 
-        form_layout = QFormLayout()
+        grid_layout = QGridLayout()
 
         light_btn = QPushButton("Select Light Colour")
         light_btn.clicked.connect(self.light_button_clicked)
         self.l_color_box = QColorBox(self.light_color)
 
-        form_layout.addRow(light_btn, self.l_color_box)
+        grid_layout.addWidget(light_btn, 0, 0, Qt.AlignmentFlag.AlignCenter)
+        grid_layout.addWidget(self.l_color_box, 0, 1, Qt.AlignmentFlag.AlignCenter)
 
         dark_btn = QPushButton("Select Dark Colour")
         dark_btn.clicked.connect(self.dark_button_clicked)
         self.d_color_box = QColorBox(self.dark_color)
 
-        form_layout.addRow(dark_btn, self.d_color_box)
+        grid_layout.addWidget(dark_btn, 1, 0, Qt.AlignmentFlag.AlignCenter)
+        grid_layout.addWidget(self.d_color_box, 1, 1, Qt.AlignmentFlag.AlignCenter)
 
-        layout.addLayout(form_layout)
+        grid_layout.setColumnStretch(0, 1)
+        grid_layout.setColumnStretch(1, 1)
+
+        layout.addLayout(grid_layout)
 
         layout.addStretch()
 
