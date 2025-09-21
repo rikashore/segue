@@ -32,6 +32,13 @@ class SegueMainWindow(QMainWindow):
 
         self.setCentralWidget(central)
 
+        self.qr_viz.genQr(
+            self.qr_controls.contents.text(),
+            self.qr_controls.light_color.name(),
+            self.qr_controls.dark_color.name(),
+            10
+        )
+
     def update_button_clicked(self):
         self.qr_viz.genQr(
             self.qr_controls.contents.text(),
