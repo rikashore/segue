@@ -1,6 +1,6 @@
 from PySide6.QtGui import QColor
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, QPushButton, QLineEdit, QColorDialog, QLabel
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, QPushButton, QLineEdit, QColorDialog, QLabel, QSpinBox
 from color_box import QColorBox
 
 class QQrControls(QWidget):
@@ -20,7 +20,7 @@ class QQrControls(QWidget):
         self.contents = QLineEdit("Hey segue into this...")
         layout.addWidget(self.contents)
 
-        layout.addSpacing(30)
+        layout.addSpacing(20)
 
         self.logo_file_label = QLabel("File Selected:")
         self.logo_file_label.setAlignment(Qt.AlignmentFlag.AlignLeft)
@@ -29,7 +29,7 @@ class QQrControls(QWidget):
         logo_choose_button = QPushButton("Select Logo File")
         layout.addWidget(logo_choose_button)
 
-        layout.addSpacing(30)
+        layout.addSpacing(20)
 
         grid_layout = QGridLayout()
 
@@ -52,21 +52,42 @@ class QQrControls(QWidget):
 
         layout.addLayout(grid_layout)
 
-        layout.addSpacing(120)
+        layout.addSpacing(20)
 
-        h_layout = QHBoxLayout()
+        scale_layout = QHBoxLayout()
+
+        scale_layout.addWidget(QLabel("Scale (1-50)"))
+        
+        self.scale_amount = QSpinBox()
+        self.scale_amount.setMinimum(1)
+        self.scale_amount.setMaximum(50)
+        self.scale_amount.setValue(5)
+
+        scale_layout.addWidget(self.scale_amount)
+
+        layout.addLayout(scale_layout)
+
+        scale_info_label = QLabel("The image scale factor is used to scale up the final image by the chosen factor. Useful for generating larger QR codes. A sane default is 5, though your requirements might vary.")
+        scale_info_label.setWordWrap(True)
+        layout.addWidget(scale_info_label)
+
+        layout.addSpacing(20)
+
+        meta_btns_layout = QHBoxLayout()
 
         self.update_btn = QPushButton("Update")
-        h_layout.addWidget(self.update_btn)
+        meta_btns_layout.addWidget(self.update_btn)
 
-        h_layout.addSpacing(100)
+        meta_btns_layout.addSpacing(100)
 
         self.save_btn = QPushButton("Save")
-        h_layout.addWidget(self.save_btn)
+        meta_btns_layout.addWidget(self.save_btn)
 
-        layout.addLayout(h_layout)
+        layout.addLayout(meta_btns_layout)
 
         layout.addStretch()
+
+        layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.setLayout(layout)
 

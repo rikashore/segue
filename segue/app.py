@@ -44,7 +44,7 @@ class SegueMainWindow(QMainWindow):
             self.qr_controls.contents.text(),
             self.qr_controls.light_color.name(),
             self.qr_controls.dark_color.name(),
-            10
+            8
         )
 
         self.statusBar().showMessage("QR Updated", 3000)
