@@ -9,7 +9,6 @@ class SegueMainWindow(QMainWindow):
         super().__init__()
 
         self.last_opened_save_dir = Path.home()
-        self.last_opened_logo_dir = Path.home()
 
         dlg = QFileDialog(self)
         dlg.setFileMode(QFileDialog.FileMode.AnyFile)
@@ -48,6 +47,7 @@ class SegueMainWindow(QMainWindow):
             self.qr_controls.contents.text(),
             self.qr_controls.light_color.name(),
             self.qr_controls.dark_color.name(),
+            self.qr_controls.logo_file
         )
 
     def update_button_clicked(self):
@@ -55,6 +55,7 @@ class SegueMainWindow(QMainWindow):
             self.qr_controls.contents.text(),
             self.qr_controls.light_color.name(),
             self.qr_controls.dark_color.name(),
+            self.qr_controls.logo_file
         )
 
         self.statusBar().showMessage("QR Updated", 3000)
@@ -78,7 +79,8 @@ class SegueMainWindow(QMainWindow):
             self.qr_controls.contents.text(),
             self.qr_controls.light_color.name(),
             self.qr_controls.dark_color.name(),
-            self.qr_controls.scale_amount.value()
+            self.qr_controls.logo_file,
+            self.qr_controls.scale_amount.value(),
         )
 
         sel_file.write_bytes(img_bytes)

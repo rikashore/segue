@@ -1,7 +1,8 @@
 from PySide6.QtGui import QColor
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, QPushButton, QLineEdit, QColorDialog, QLabel, QSpinBox
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, QPushButton, QLineEdit, QColorDialog, QFileDialog, QLabel, QSpinBox
 from color_box import QColorBox
+from pathlib import Path
 
 class QQrControls(QWidget):
     def __init__(self, *args, **kwargs):
@@ -9,7 +10,10 @@ class QQrControls(QWidget):
 
         self.light_color = QColor.fromString("#ffffff")
         self.dark_color = QColor.fromString("#111111")
+        self.logo_file = None
 
+        self.last_opened_logo_dir = Path.home()
+        
         layout = QVBoxLayout()
 
         layout.addStretch()
@@ -27,6 +31,7 @@ class QQrControls(QWidget):
         layout.addWidget(self.logo_file_label)
 
         logo_choose_button = QPushButton("Select Logo File")
+        logo_choose_button.clicked.connect(self.logo_button_clicked)
         layout.addWidget(logo_choose_button)
 
         layout.addSpacing(20)
@@ -109,4 +114,18 @@ class QQrControls(QWidget):
         )
         self.d_color_box.setColor(d_color)
         self.dark_color = d_color
+
+    def logo_button_clicked(self):
+        (fileName, _) = QFileDialog.getOpenFileName(
+            self,
+            "Select Logo Image",
+            str(self.last_opened_logo_dir),
+            "Png Files (*.png)"
+        )
+
+        if not fileName:
+            return
+        
+        self.logo_file = Path(fileName)
+        self.logo_file_label.setText(f"File Selected: {self.logo_file.name}")
         
