@@ -9,12 +9,19 @@ class QQrViz(QLabel):
         super().__init__("No QR Generated", *args, **kwargs)
 
 
-    def genQr(self, content, light, dark, scale):
+    def regen_preview(self, content, light, dark):
+        buf = BytesIO()
+        qrc = segno.make(content, error='H', micro=False)
+        qrc.save(buf, kind="png", dark=dark, light=light, scale=9)
+        pix = QPixmap()
+        pix.loadFromData(buf.getvalue())
+        self.clear()
+        self.setPixmap(pix)
+
+    def create_image(self, content, light, dark, scale):
+        buf = BytesIO()
         buf = BytesIO()
         qrc = segno.make(content, error='H', micro=False)
         qrc.save(buf, kind="png", dark=dark, light=light, scale=scale)
-        buf.seek(0)
-        pix = QPixmap()
-        pix.loadFromData(buf.read())
-        self.clear()
-        self.setPixmap(pix)
+
+        return buf.getvalue()
