@@ -18,7 +18,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v5
+        with:
+          path: artifacts/
 
       - name: Check Existence
-        run: |
-          ls -la
+        run: ls -R artifacts/

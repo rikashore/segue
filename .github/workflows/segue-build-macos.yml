@@ -24,3 +24,8 @@ jobs:
             -i="res/New Piskel-1.png.icns" \
             -w \
             segue/segue.py
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v5
+        with:
+            path: dist/*
