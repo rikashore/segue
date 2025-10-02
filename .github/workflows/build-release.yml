@@ -5,13 +5,13 @@ on: workflow_dispatch
   #     - "v*.*.*"
 jobs:
   build-linux:
-    uses: rikashore/segue/.github/workflows/segue-build-linux.yml@v1
+    uses: ./.github/workflows/segue-build-linux.yml@v1
 
   build-macos:
-    uses: rikashore/segue/.github/workflows/segue-build-macos.yml@v1
+    uses: ./.github/workflows/segue-build-macos.yml@v1
 
   build-windows:
-    uses: rikashore/segue/.github/workflows/segue-build-windows.yml@v1
+    uses: ./.github/workflows/segue-build-windows.yml@v1
 
   build:
     runs-on: ubuntu-latest
