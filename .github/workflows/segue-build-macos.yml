@@ -31,5 +31,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-            file: segue-mac.zip
+            path: segue-mac.zip
             overwrite: true
