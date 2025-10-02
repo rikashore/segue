@@ -1,2 +1,5 @@
 venv/
 segue/__pycache__/
+build/
+dist/
+segue.spec
