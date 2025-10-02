@@ -26,7 +26,9 @@ jobs:
             segue/segue.py
 
       - name: Zip
-        run: (cd dist/segue zip -r ../segue-mac.zip .)
+        run: | 
+          (cd dist/segue zip -r ../segue-mac.zip .)
+          ls
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
