@@ -32,5 +32,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
             name: segue-linux
-            path: segue-linux.zip
+            path: dist/segue-linux.zip
             overwrite: true

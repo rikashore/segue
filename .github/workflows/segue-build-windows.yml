@@ -31,5 +31,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
             name: segue-windows
-            path: segue-windows.zip
+            path: dist/segue-windows.zip
             overwrite: true
