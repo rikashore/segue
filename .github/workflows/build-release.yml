@@ -1,0 +1,23 @@
+name: build-release
+on: workflow_dispatch
+  # push:
+  #   tags:
+  #     - "v*.*.*"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Build Linux
+        uses: rikashore/segue/.github/workflows/segue-build-linux.yml@v1
+
+      - name: Build MacOS
+        uses: rikashore/segue/.github/workflows/segue-build-macos.yml@v1
+
+      - name: Build Windows
+        uses: rikashore/segue/.github/workflows/segue-build-windows.yml@v1
+
+      - name: Check Existence
+        run: |
+          ls -la build/
