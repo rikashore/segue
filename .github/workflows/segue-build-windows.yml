@@ -19,7 +19,12 @@ jobs:
 
       - name: Package Executable
         run: |
-          pyinstaller --noconfirm --log-level=WARN \
-            -i="res/New Piskel-1.png.ico" \
-            -w \
+          pyinstaller --noconfirm --log-level=WARN `
+            -i="res/New Piskel-1.png.ico" `
+            -w `
             segue/segue.py
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+            path: dist/*
