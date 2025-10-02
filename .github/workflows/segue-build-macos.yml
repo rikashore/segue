@@ -22,7 +22,7 @@ jobs:
           pyinstaller --noconfirm --log-level=WARN \
             --osx-bundle-identifier="com.github.rikashore.segue" \
             -i="res/New Piskel-1.png.icns" \
-            --windowed \
+            --windowed --noconsole \
             segue/segue.py
 
       - name: Zip
