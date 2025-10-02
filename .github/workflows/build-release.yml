@@ -23,4 +23,4 @@ jobs:
           path: artifacts/
 
       - name: Check Existence
-        run: ls -R artifacts/
+        run: ls artifacts/
