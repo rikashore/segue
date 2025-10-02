@@ -1,4 +1,4 @@
-name: segue-build-windows
+name: segue-build-macos
 on: workflow_dispatch
 jobs:
   build:
