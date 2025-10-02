@@ -1,5 +1,5 @@
 name: segue-build-windows
-on: workflow_dispatch
+on: workflow_call
 jobs:
   build:
     runs-on: windows-latest
