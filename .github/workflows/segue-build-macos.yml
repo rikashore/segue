@@ -25,10 +25,11 @@ jobs:
             --noconsole \
             --onefile \
             segue/segue.py
+          ls
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
             name: segue-mac
-            path: dist/segue/*
+            path: dist/segue.app
             overwrite: true
