@@ -20,7 +20,7 @@ jobs:
       - name: Package Executable
         run: |
           pyinstaller --noconfirm --log-level=WARN \
-            --osx-bundle-identifier="com.github.rikashore.segue"
+            --osx-bundle-identifier="com.github.rikashore.segue" \
             -i="res/New Piskel-1.png.icns" \
             -w \
             segue/segue.py
