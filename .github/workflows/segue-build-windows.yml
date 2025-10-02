@@ -24,12 +24,9 @@ jobs:
             -w `
             segue/segue.py
 
-      - name: Zip
-        run: (cd dist/segue && 7z a -r ../segue-windows.zip .)
-
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
             name: segue-windows
-            path: dist/segue-windows.zip
+            path: dist/segue/*
             overwrite: true

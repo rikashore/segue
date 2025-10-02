@@ -23,12 +23,9 @@ jobs:
             -w \
             segue/segue.py
 
-      - name: Zip
-        run: (cd dist/segue && zip -r ../segue-linux.zip .)
-
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
             name: segue-linux
-            path: dist/segue-linux.zip
+            path: dist/segue/*
             overwrite: true

@@ -25,14 +25,9 @@ jobs:
             --windowed --noconsole \
             segue/segue.py
 
-      - name: Zip
-        run: | 
-          (cd dist/segue zip -r ../segue-mac.zip .)
-          ls
-
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
             name: segue-mac
-            path: dist/segue-mac.zip
+            path: dist/segue/*
             overwrite: true
