@@ -23,9 +23,8 @@ jobs:
             --osx-bundle-identifier="com.github.rikashore.segue" \
             -i="res/New Piskel-1.png.icns" \
             --noconsole \
-            --onefile \
             segue/segue.py
-          ls
+          ls dist/
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
