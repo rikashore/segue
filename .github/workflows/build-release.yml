@@ -21,4 +21,4 @@ jobs:
 
       - name: Check Existence
         run: |
-          ls -la build/
+          ls -la
